@@ -33,7 +33,6 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager GetInstance()
     {
         return instance;
-
     }
 
     private void Start()
@@ -88,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
            text.text = currentStory.Continue();
-            DisplayChoices();
+           DisplayChoices();
         }
         else
         {
@@ -120,7 +119,7 @@ public class DialogueManager : MonoBehaviour
             index++;
         }
 
-        for (int i = 0; i < choices.Length; i++)
+        for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
         }
@@ -130,5 +129,6 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
             currentStory.ChooseChoiceIndex(choiceIndex);
+            ContinueDialogue();
     }
 }
